@@ -1,24 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import Course from "./pages/courses/Course";
+import Subject from "./pages/courses/Subject";
+import Group from "./pages/groups/Group";
+import Class from "./pages/courses/Class";
+import Topic from "./pages/groups/Topic";
+import Post from "./pages/votes/Post";
+import Vote from "./pages/votes/Vote";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Login />}/>
+          <Route path="/clipclass" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path={"courses/:courseId"} element={<Course/>}/>
+              <Route path={"subjects/:subjectId"} element={<Subject/>} />
+              <Route path={"groups/:groupId"} element={<Group/>} />
+              <Route path={"classes/:classId"} element={<Class/>} />
+              <Route path={"topics/:topicId"} element={<Topic/>} />
+              <Route path={"posts/:postId"} element={<Post/>} />
+              <Route path={"votes/:voteId"} element={<Vote/>} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
   );
 }
 
