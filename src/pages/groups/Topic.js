@@ -4,7 +4,6 @@ import {useEffect, useState} from "react";
 import {ClipclassData} from "../../components/ClipclassData";
 import {useLocation} from "react-router-dom";
 import {Filter} from "../../utils/AuxiliarFunctions";
-import {getAllSubjects} from "../../services/courses-ms/SubjectService";
 import {getAllPosts} from "../../services/votes-ms/PostService";
 
 
@@ -33,7 +32,7 @@ const Topic = () => {
             <p>Topic title: {topic.title}</p>
             <p>Topic year: {topic.year}</p>
             <PageHeader title={"Posts"} setQuery={setSearch} query={search} filter={checkedState} setFilter={setCheckedState}/>
-            <Cards results={results} cardPath={"/clipclass/posts"}/>
+            <Cards results={results} cardPath={"/clipclass/posts"} table={"posts"}/>
         </>
     )
 }

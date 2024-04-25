@@ -40,7 +40,7 @@ const PageHeader = ({title,setQuery, query, filter ,setFilter}) => {
 
     return (
         <div className="page-header">
-            <h1>{title}</h1>
+            <h1 className={"title"}>{title}</h1>
             <div className="actions">
                 <ClickAwayListener onClickAway={handleClickAway}>
                     <Box sx={{ position: 'relative'}} className={"filter"} onClick={handleClick}>

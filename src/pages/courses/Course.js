@@ -1,10 +1,9 @@
-import {Link, useLocation} from "react-router-dom";
+import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {getAllSubjects} from "../../services/courses-ms/SubjectService";
 import PageHeader from "../../components/PageHeader";
 import {ClipclassData} from "../../components/ClipclassData";
 import {Filter} from "../../utils/AuxiliarFunctions";
-import Card from "../../components/Card";
 import Cards from "../../components/Cards";
 
 
@@ -31,7 +30,7 @@ const Course = () => {
             <p>Course title: {course.title}</p>
             <p>Course year: {course.year}</p>
             <PageHeader title={"Subjects"} setQuery={setSearch} query={search} filter={checkedState} setFilter={setCheckedState}/>
-            <Cards results={results} cardPath={"/clipclass/subjects"}/>
+            <Cards results={results} cardPath={"/clipclass/subjects"} table={"subjects"}/>
         </>
     )
 }

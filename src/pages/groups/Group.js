@@ -3,8 +3,8 @@ import {ClipclassData} from "../../components/ClipclassData";
 import {useLocation} from "react-router-dom";
 import {Filter} from "../../utils/AuxiliarFunctions";
 import PageHeader from "../../components/PageHeader";
-import {getAllGroups, getGroupTopics, getGroupUsers} from "../../services/groups-ms/GroupService";
-import {getAllUsers, getUserById} from "../../services/users-ms/UserService";
+import {getGroupTopics, getGroupUsers} from "../../services/groups-ms/GroupService";
+import {getAllUsers} from "../../services/users-ms/UserService";
 import Cards from "../../components/Cards";
 import {getAllTopics} from "../../services/groups-ms/TopicService";
 
@@ -58,10 +58,10 @@ const Group = () => {
             })}
             <PageHeader title={"Users"} setQuery={setSearchUsers} query={searchUsers} filter={checkedStateUsers}
                         setFilter={setCheckedStateUsers}/>
-            <Cards results={results_users} cardPath={"/clipclass/users"}/>
+            <Cards results={results_users} cardPath={"/clipclass/users"} table={"users"}/>
             <PageHeader title={"Topics"} setQuery={setSearchTopics} query={searchTopics} filter={checkedStateTopics}
                         setFilter={setCheckedStateTopics}/>
-            <Cards results={results_topics} cardPath={"/clipclass/topics"}/>
+            <Cards results={results_topics} cardPath={"/clipclass/topics"} table={"topics"}/>
         </>
     )
 }

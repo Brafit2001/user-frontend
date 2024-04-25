@@ -1,6 +1,6 @@
 import axios from 'axios'
 import {checkParams} from "../../utils/AuxiliarFunctions";
-
+import { jwtDecode } from 'jwt-decode'
 const TOKEN = localStorage.getItem("token")
 const BASE_URL = `http://localhost:8080/users/`
 
@@ -63,7 +63,18 @@ export const deleteUser = (userId) =>
         .then((response) => response)
         .catch((error) => console.log(error))
 
+export const getLoggedUserId = () => {
+    const token = localStorage.getItem("token")
+    return jwtDecode(token)["userId"]
+}
 
-
-
-
+export const changePassword = (user) =>
+    axios
+        .put(`${BASE_URL}${user.id}/change-password`,
+            user,{
+                headers: {
+                    "Authorization": "Bearer " + TOKEN
+                }
+            })
+        .then((response) => response)
+        .catch((error) => console.log(error))

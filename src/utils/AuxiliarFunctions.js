@@ -40,7 +40,7 @@ export const Filter = (list, filterFields, checkedState, search) => {
 }
 
 export function checkParams(params, url) {
-    if (params !== null) {
+    if (params !== null && params !== undefined) {
         let chain = "?"
         Object.keys(params).forEach((key) => chain += `${key}=${params[key]}`)
         return url + chain

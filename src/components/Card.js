@@ -1,13 +1,16 @@
 import {Link} from "react-router-dom";
+import {ClipclassData} from "./ClipclassData";
+import Background from "../resources/images/course-background.png"
 
-
-const Card = ({path, element}) => {
+const Card = ({path, element, table}) => {
+    console.log(table)
     return(
         <Link to={`${path}/${element.id}`} className={"card"} state={element}>
+            <img src={Background} alt=""/>
             <div className="info">
-                {Object.keys(element).map((key) => {
+                {ClipclassData[table]["show"].map((key) => {
                     return(
-                        <p key={key}>{key} : {element[key]}</p>
+                        <p className={key}>{element[key]}</p>
                     )
                 })}
             </div>

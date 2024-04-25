@@ -10,6 +10,7 @@ import Class from "./pages/courses/Class";
 import Topic from "./pages/groups/Topic";
 import Post from "./pages/votes/Post";
 import Vote from "./pages/votes/Vote";
+import User from "./pages/users/User";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <Route path={"topics/:topicId"} element={<Topic/>} />
               <Route path={"posts/:postId"} element={<Post/>} />
               <Route path={"votes/:voteId"} element={<Vote/>} />
+              <Route path={"users/:userId"} element={<User/>} />
           </Route>
         </Routes>
       </BrowserRouter>

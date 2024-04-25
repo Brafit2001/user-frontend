@@ -14,6 +14,9 @@ export const ClipclassData = {
         ],
         filter: [
             "id", "username", "name", "surname", "email"
+        ],
+        show: [
+            "name", "id" ,"username", "surname", "email", "image"
         ]
     },
     roles: {
@@ -29,6 +32,9 @@ export const ClipclassData = {
         ],
         filter: [
             "id", "name"
+        ],
+        show: [
+            "name"
         ]
     },
     courses: {
@@ -44,6 +50,9 @@ export const ClipclassData = {
         ],
         filter: [
             "id","title","year"
+        ],
+        show: [
+            "title", "year"
         ]
     },
     classes: {
@@ -59,6 +68,9 @@ export const ClipclassData = {
         ],
         filter: [
             "id","subject", "title"
+        ],
+        show: [
+            "title", "image"
         ]
     },
     groups: {
@@ -74,6 +86,9 @@ export const ClipclassData = {
         ],
         filter: [
             "id","name","description", "class"
+        ],
+        show: [
+            "name","description"
         ]
     },
     subjects: {
@@ -89,6 +104,9 @@ export const ClipclassData = {
         ],
         filter: [
             "id","code","title", "course"
+        ],
+        show: [
+            "title","code"
         ]
     },
     topics: {
@@ -104,6 +122,9 @@ export const ClipclassData = {
         ],
         filter: [
             "id","title","deadline", "unit"
+        ],
+        show: [
+            "title","deadline", "unit"
         ]
     },
     votes: {
@@ -115,10 +136,13 @@ export const ClipclassData = {
             "user","post", "topic", "content", "originality", "clarity", "mean"
         ],
         create: [
-            "user","post", "topic", "content", "originality", "clarity", "mean"
+            "content","originality", "clarity", "mean"
         ],
         filter: [
             "id","user","post", "topic", "content", "originality", "clarity", "mean"
+        ],
+        show: [
+            "user","content", "originality", "clarity", "mean"
         ]
     },
     posts: {
@@ -134,6 +158,9 @@ export const ClipclassData = {
         ],
         filter: [
             "id","user","topic", "title", "type", "content"
+        ],
+        show: [
+            "title", "type", "content"
         ]
     },
 

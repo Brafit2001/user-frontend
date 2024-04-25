@@ -3,7 +3,6 @@ import {useEffect, useState} from "react";
 import {ClipclassData} from "../../components/ClipclassData";
 import {useLocation} from "react-router-dom";
 import {Filter} from "../../utils/AuxiliarFunctions";
-import {getAllClasses} from "../../services/courses-ms/ClassService";
 import {getAllGroups} from "../../services/groups-ms/GroupService";
 import Cards from "../../components/Cards";
 
@@ -35,7 +34,7 @@ const ClassPage = () => {
             })}
             <PageHeader title={"Groups"} setQuery={setSearch} query={search} filter={checkedState}
                         setFilter={setCheckedState}/>
-            <Cards results={results} cardPath={"/clipclass/groups"}/>
+            <Cards results={results} cardPath={"/clipclass/groups"} table={"groups"}/>
         </>
     )
 }

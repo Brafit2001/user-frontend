@@ -3,8 +3,6 @@ import {useEffect, useState} from "react";
 import {ClipclassData} from "../components/ClipclassData";
 import {getAllCourses} from "../services/courses-ms/CourseService";
 import {Filter} from "../utils/AuxiliarFunctions";
-import {Link} from "react-router-dom";
-import Card from "../components/Card";
 import Cards from "../components/Cards";
 const Home = () => {
     const [courses, setCourses] = useState([])
@@ -23,7 +21,7 @@ const Home = () => {
                 <h1>Welcome User</h1>
                 <h3>Home</h3>
                 <PageHeader title={"Courses"} setQuery={setSearch} query={search} filter={checkedState} setFilter={setCheckedState}/>
-                <Cards results={results} cardPath={"/clipclass/courses"}/>
+                <Cards results={results} cardPath={"/clipclass/courses"} table={"courses"}/>
             </section>
 
         </div>

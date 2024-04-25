@@ -1,4 +1,25 @@
 
+@font-face {
+  font-family: Poppins-bold;
+  src: url("../resources/fonts/Poppins-Bold.ttf");
+}
+
+@font-face {
+  font-family: Poppins-semiBold;
+  src: url("../resources/fonts/Poppins-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: Poppins-medium;
+  src: url("../resources/fonts/Poppins-Medium.ttf");
+}
+
+@font-face {
+  font-family: Poppins-light;
+  src: url("../resources/fonts/Poppins-Light.ttf");
+}
+
+
 a{
   text-decoration: none;
   color: black;
@@ -86,7 +107,9 @@ header{
   height: 80px;
   align-items: center;
   justify-content: space-between;
-
+  .title{
+    font-family: Poppins-bold, serif;
+  }
   .actions{
     display: flex;
     justify-content: end;
@@ -164,19 +187,41 @@ header{
   margin-top: 40px;
   .card{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 200px;
-    height: 200px;
-    background-color: rgba(255, 0, 0, 0.51);
-    border-radius: 5px;
+    width: 250px;
+    height: 350px;
+    background-color: white;
+    border-radius: 14px;
     cursor: pointer;
+    box-shadow: 0 10px 60px 0 #262D7614;
+    overflow: hidden;
+
+    img{
+      height: 350px;
+    }
 
     .info{
       display: flex;
       flex-direction: column;
       width: 87%;
       height: 90%;
+      margin-top: 20px;
+
+
+      .title, .name{
+        font-family: Poppins-semiBold, serif;
+        font-size: 18px;
+        color: #0B7077;
+      }
+
+      .year{
+        font-family: Poppins-light, serif;
+        font-size: 14px;
+        color: grey;
+      }
+
     }
   }
 }
