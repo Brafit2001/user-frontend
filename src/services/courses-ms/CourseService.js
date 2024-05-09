@@ -14,6 +14,17 @@ export const getAllCourses = () =>
         .catch((error) => console.log(error))
 
 
+export const getCourseBydId = (courseId) =>
+    axios
+        .get(BASE_URL + courseId,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+
 export const editCourse = (course) =>
     axios
         .put(BASE_URL + course.id,
@@ -39,9 +50,9 @@ export const newCourse = (course) =>
 
 
 
-export const deleteCourse = (courseId) =>
+export const deleteCourse = (props) =>
     axios
-        .delete(BASE_URL + courseId,
+        .delete(BASE_URL + props.id,
             {
                 headers: {
                     "Authorization": "Bearer " + TOKEN

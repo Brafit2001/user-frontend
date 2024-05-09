@@ -26,17 +26,74 @@ export const getUserById = (userId) =>
         .catch((error) => console.log(error))
 
 
-
-export const editUser = (user) =>
+export const getUserCourses = (userId) =>
     axios
+        .get(`${BASE_URL}${userId}/courses`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+export const getUserSubjects = (userId) =>
+    axios
+        .get(`${BASE_URL}${userId}/subjects`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+export const getUserClasses= (userId) =>
+    axios
+        .get(`${BASE_URL}${userId}/classes`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+export const getUserGroups = (userId) =>
+    axios
+        .get(`${BASE_URL}${userId}/groups`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+
+export const getUserTopics = (userId) =>
+    axios
+        .get(`${BASE_URL}${userId}/topics`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+
+
+export const editUser = (user) => {
+    const bodyFormData = new FormData();
+    Object.keys(user).forEach((key) => {
+        bodyFormData.append(key, user[key]);
+    })
+    return axios
         .put(BASE_URL + user.id,
-            user,{
+            bodyFormData, {
                 headers: {
                     "Authorization": "Bearer " + TOKEN
                 }
             })
         .then((response) => response)
         .catch((error) => console.log(error))
+}
 
 
 export const newUser = (user) =>

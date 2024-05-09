@@ -14,10 +14,9 @@ export const getAllGroups = (params) =>
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
-
-export const getGroupUsers = (groupId) =>
+export const getGroupById = (groupId) =>
     axios
-        .get(`${BASE_URL}${groupId}/users`,{
+        .get(BASE_URL + groupId,{
             headers: {
                 "Authorization": "Bearer " + TOKEN
             }
@@ -25,9 +24,42 @@ export const getGroupUsers = (groupId) =>
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
-export const getGroupTopics = (groupId) =>
+
+
+export const getGroupUsers = (userId) =>
     axios
-        .get(`${BASE_URL}${groupId}/topics`,{
+        .get(`${BASE_URL}${userId}/users`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+export const getGroupRemainingUsers = (userId) =>
+    axios
+        .get(`${BASE_URL}${userId}/users-remaining`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+
+export const getGroupTopics = (userId) =>
+    axios
+        .get(`${BASE_URL}${userId}/topics`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+export const getGroupRemainingTopics = (userId) =>
+    axios
+        .get(`${BASE_URL}${userId}/topics-remaining`,{
             headers: {
                 "Authorization": "Bearer " + TOKEN
             }
@@ -60,9 +92,9 @@ export const newGroup = (group) =>
 
 
 
-export const deleteGroup = (groupId) =>
+export const deleteGroup = (props) =>
     axios
-        .delete(BASE_URL + groupId,
+        .delete(BASE_URL + props.id,
             {
                 headers: {
                     "Authorization": "Bearer " + TOKEN
@@ -70,6 +102,51 @@ export const deleteGroup = (groupId) =>
             })
         .then((response) => response)
         .catch((error) => console.log(error))
+
+
+export const deleteGroupUser = (props) =>
+    axios
+        .delete(`${BASE_URL}${props.groupId}/users/${props.id}`,
+            {
+                headers: {
+                    "Authorization": "Bearer " + TOKEN
+                }
+            })
+        .then((response) => response)
+        .catch((error) => console.log(error))
+
+export const deleteGroupTopic = (props) =>
+    axios
+        .delete(`${BASE_URL}${props.groupId}/topics/${props.id}`,
+            {
+                headers: {
+                    "Authorization": "Bearer " + TOKEN
+                }
+            })
+        .then((response) => response)
+        .catch((error) => console.log(error))
+
+export const assignGroup = (body) =>
+    axios
+        .post(`${BASE_URL}assign-user-to-group`,body,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+
+export const assignTopic = (body) =>
+    axios
+        .post(`${BASE_URL}assign-topic-to-group`,body,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
 
 
 

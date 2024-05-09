@@ -40,9 +40,9 @@ export const newVote = (vote) =>
 
 
 
-export const deleteVote = (voteId) =>
+export const deleteVote = (props) =>
     axios
-        .delete(BASE_URL + voteId,
+        .delete(BASE_URL + props.id,
             {
                 headers: {
                     "Authorization": "Bearer " + TOKEN

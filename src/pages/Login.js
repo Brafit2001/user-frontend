@@ -1,10 +1,10 @@
-import {Link, useNavigate} from "react-router-dom";
-import {login} from "../services/AuthService";
-import {useState} from "react";
 
+import  '../styles/LoginPage.scss'
+import {useState} from "react";
+import {login} from "../services/AuthService";
 
 const Login = () => {
-    const navigate = useNavigate();
+
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
@@ -13,7 +13,7 @@ const Login = () => {
             .then((response) => {
                 const token = response.data.token
                 localStorage.setItem("token", token)
-                navigate("/clipclass")
+                window.location.href = "/clipclass";
             })
             .catch((error) => alert("something went wrong"))
     }

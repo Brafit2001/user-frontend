@@ -1,4 +1,7 @@
-
+import User1 from "../resources/images/user1.png"
+import User2 from "../resources/images/user2.png"
+import User3 from "../resources/images/user3.png"
+import User4 from "../resources/images/user4.png"
 
 export const ClipclassData = {
     users: {
@@ -17,7 +20,13 @@ export const ClipclassData = {
         ],
         show: [
             "name", "id" ,"username", "surname", "email", "image"
-        ]
+        ],
+        defaultImages: {
+            user1: User1,
+            user2: User2,
+            user3: User3,
+            user4: User4
+        }
     },
     roles: {
         title: "Roles",
@@ -52,7 +61,7 @@ export const ClipclassData = {
             "id","title","year"
         ],
         show: [
-            "title", "year"
+            "id","title","year"
         ]
     },
     classes: {
@@ -70,7 +79,7 @@ export const ClipclassData = {
             "id","subject", "title"
         ],
         show: [
-            "title", "image"
+            "id","subject", "title", "image"
         ]
     },
     groups: {
@@ -88,7 +97,7 @@ export const ClipclassData = {
             "id","name","description", "class"
         ],
         show: [
-            "name","description"
+            "name","description", "class"
         ]
     },
     subjects: {
@@ -106,7 +115,7 @@ export const ClipclassData = {
             "id","code","title", "course"
         ],
         show: [
-            "title","code"
+            "id","code","title", "course"
         ]
     },
     topics: {
@@ -124,7 +133,7 @@ export const ClipclassData = {
             "id","title","deadline", "unit"
         ],
         show: [
-            "title","deadline", "unit"
+            "id","title","deadline", "unit"
         ]
     },
     votes: {
@@ -133,16 +142,16 @@ export const ClipclassData = {
             "id","user","post", "topic", "content", "originality", "clarity", "mean"
         ],
         editable: [
-            "user","post", "topic", "content", "originality", "clarity", "mean"
+            "content", "originality", "clarity"
         ],
         create: [
-            "content","originality", "clarity", "mean"
+            "content","originality", "clarity"
         ],
         filter: [
             "id","user","post", "topic", "content", "originality", "clarity", "mean"
         ],
         show: [
-            "user","content", "originality", "clarity", "mean"
+            "user","post", "content", "originality", "clarity", "mean"
         ]
     },
     posts: {
@@ -151,16 +160,16 @@ export const ClipclassData = {
             "id","user","topic", "title", "type", "content"
         ],
         editable: [
-            "user","topic", "title", "type", "content"
+            "title", "type","content"
         ],
         create: [
-            "user","topic", "title", "type", "content"
+            "title", "type", "content"
         ],
         filter: [
             "id","user","topic", "title", "type", "content"
         ],
         show: [
-            "title", "type", "content"
+            "id","user","topic", "title", "type"
         ]
     },
 

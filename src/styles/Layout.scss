@@ -19,6 +19,27 @@
   src: url("../resources/fonts/Poppins-Light.ttf");
 }
 
+@font-face {
+  font-family: Manrope;
+  src: url("../resources/fonts/Manrope-VariableFont_wght.ttf");
+}
+
+@font-face {
+  font-family: Inter;
+  src: url("../resources/fonts/Inter-VariableFont_slnt,wght.ttf");
+}
+
+@font-face {
+  font-family: Poppins SemiBold;
+  src: url("../resources/fonts/Poppins-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: Gilroy-Light;
+  src: url("../resources/fonts/Gilroy-Light.ttf");
+}
+
+
 
 a{
   text-decoration: none;
@@ -32,10 +53,152 @@ ul{
   list-style: none;
   padding: 0;
 }
+
 main{
-  margin: 3% 5% 0 5%;
+  margin: 0;
 }
 // ---------------------------------------------------------------------------------------//
+// EDIT USER IMAGE POP UP
+.popup-container{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  backdrop-filter: blur(5px);
+
+  .popup{
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    width: 400px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+
+    h3{
+      margin: 0
+    }
+
+
+    button{
+      width: 30px;
+      height: 30px;
+      border-radius: 30px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+
+    .default-images{
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+      height: 80px;
+
+      .button{
+        cursor: pointer;
+        border-radius: 100px;
+      }
+
+      .on{
+        width: 60px;
+        height: 60px;
+      }
+
+      .off{
+        width: 50px;
+        height: 50px;
+        opacity: 40%;
+      }
+
+    }
+  }
+}
+
+
+.left-sidebar{
+  display: flex;
+  justify-content: center;
+  width: 17%;
+  background-color: #FFFFFF;
+  height: 90vh;
+
+  .sidebar-cards{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    row-gap: 20px;
+
+    .icon-title{
+      display: flex;
+      align-items: center;
+      height: 40px;
+      column-gap: 10px;
+
+      border-radius: 10px;
+      cursor: pointer;
+
+      padding: 5px;
+
+      .icon{
+        width: 30px;
+      }
+      .text{
+        font-family: Inter, serif;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        text-align: left;
+
+        flex: 1 1 50%;
+      }
+    }
+
+    .subCard{
+      display: flex;
+      height: 40px;
+      align-items: center;
+
+      margin-left: 50px;
+
+      .subText{
+        font-family: Inter, serif;
+        font-size: 15px;
+        font-weight: 400;
+        line-height: 24px;
+        text-align: left;
+      }
+    }
+
+  }
+}
+
+main{
+  display: flex;
+  width: 100%;
+  height: 90vh;
+  background-color: rgba(238, 221, 221, 0.27);
+
+
+  .main-content{
+    margin: 10px 50px 10px 50px;
+    width: 100%;
+    overflow-y: scroll;
+
+  }
+}
 
 header{
   display: flex;
@@ -65,14 +228,19 @@ header{
       column-gap: 20px;
       width: 20%;
       height: 90%;
-
       .profile-image{
+        display: flex;
+        align-items: center;
+        justify-content: center;
         width: 40px;
         height: 40px;
         border-radius: 100px;
-        background-color: red;
-      }
+        overflow: hidden;
 
+        img{
+          height: 100%;
+        }
+      }
       .profile-info{
         display: flex;
         flex-direction: column;
@@ -96,6 +264,13 @@ header{
           color: #777676;
 
         }
+      }
+      .logout-icon{
+        color: red;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
       }
     }
   }
@@ -222,6 +397,29 @@ header{
         color: grey;
       }
 
+    }
+  }
+}
+
+// READ POST
+.post-image-info{
+  display: flex;
+  column-gap: 30px;
+  width: 100%;
+  height: 300px;
+
+  .image{
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+
+    .modal-image{
+      max-width: 50%;
+      max-height: 50%;
+    }
+    .post-image{
+      cursor: pointer;
+      width: 100%;
     }
   }
 }

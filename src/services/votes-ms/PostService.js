@@ -14,35 +14,53 @@ export const getAllPosts = (params) =>
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
-
-export const editPost = (post) =>
+export const getPostById = (id) =>
     axios
+        .get(`${BASE_URL}${id}`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+
+
+export const editPost = (post) => {
+    const bodyFormData = new FormData();
+    Object.keys(post).forEach((key) => {
+        bodyFormData.append(key, post[key]);
+    })
+    return axios
         .put(BASE_URL + post.id,
-            post,{
+            bodyFormData, {
                 headers: {
                     "Authorization": "Bearer " + TOKEN
                 }
             })
         .then((response) => response)
         .catch((error) => console.log(error))
-
-
-export const newPost = (post) =>
-    axios
+}
+export const newPost = (post) => {
+    const bodyFormData = new FormData();
+    Object.keys(post).forEach((key) => {
+        bodyFormData.append(key, post[key]);
+    })
+    return axios
         .post(BASE_URL,
-            post,{
+            bodyFormData, {
                 headers: {
                     "Authorization": "Bearer " + TOKEN
                 }
             })
         .then((response) => response)
         .catch((error) => console.log(error))
+}
 
 
-
-export const deletePost = (postId) =>
+export const deletePost = (props) =>
     axios
-        .delete(BASE_URL + postId,
+        .delete(BASE_URL + props.id,
             {
                 headers: {
                     "Authorization": "Bearer " + TOKEN
