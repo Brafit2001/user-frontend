@@ -76,7 +76,14 @@ export const Filter = (list, filterFields, checkedState, searchQuery) => {
     return (results.length === 0) ? null : results
 }
 
-
+export function parseIds(list){
+    let chain = ''
+    list.forEach((item, index, array) => {
+        chain += item.id
+        if (index !== array.length - 1) chain += ","
+    })
+    return chain
+}
 export const getIdFromPath = (location, table = "users") => {
     const path = location.pathname.split('/')
     return (CheckElementInList(path, table)) ? path[path.indexOf(table) + 1] : null

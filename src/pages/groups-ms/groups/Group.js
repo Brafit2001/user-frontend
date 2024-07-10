@@ -1,12 +1,10 @@
 import {useEffect, useState} from "react";
-import {ClipclassData} from "../../../components/ClipclassData";
 import {Link, useLocation} from "react-router-dom";
-import {Filter, getTitleFromPath, getIdFromPath} from "../../../utils/AuxiliarFunctions";
-import SearchSection from "../../../components/SearchSection";
-import {getGroupById, getGroupTopics, getGroupUsers} from "../../../services/groups-ms/GroupService";
-import {getAllUsers} from "../../../services/users-ms/UserService";
+import {getTitleFromPath, parseIds} from "../../../utils/AuxiliarFunctions";
+import {getGroupById, getGroupTopics} from "../../../services/groups-ms/GroupService";
 import Cards from "../../../components/cards/Cards";
 import {getAllTopics} from "../../../services/groups-ms/TopicService";
+import {getClassById} from "../../../services/courses-ms/ClassService";
 
 
 
@@ -18,39 +16,31 @@ const Group = () => {
     const path = location.pathname.split("/")
     const groupId = path[path.length - 1]
     const [group, setGroup] = useState(location.state)
+    const [classItem, setClassItem] = useState(null)
 
-    const userId = getIdFromPath(location)
 
-    function parseIds(list){
-        let chain = ''
-        list.forEach((item, index, array) => {
-            chain += item.id
-            if (index !== array.length - 1) chain += ","
-        })
-        return chain
-    }
     useEffect(() => {
         !group && getGroupById(groupId).then((group) => setGroup(group))
         getGroupTopics(groupId).then((topicsIds) => {
-            const params = {ids: parseIds(topicsIds)}
-            getAllTopics(params).then((topics) => {
-                setTopics(topics)
-            })
+            if (topicsIds){
+                const params = {ids: parseIds(topicsIds)}
+                getAllTopics(params).then((topics) => {
+                    setTopics(topics)
+                })
+            }else setTopics(null)
         })
+        getClassById(group.class).then((classItem) => setClassItem(classItem))
     }, [group, groupId]);
     return(
         <>
-            {group &&
+            {(group && classItem) &&
                 <div>
                     <h1>{getTitleFromPath(location)}</h1>
                     <Link to={`/clipclass/classes/${group.class}`}>
-                        CLASS: {group.class}
+                        <b>Class: </b>: {classItem.title}
                     </Link>
-                    {Object.keys(group).map((key) => {
-                        return (
-                            <p key={key}>{key} : {group[key]}</p>
-                        )
-                    })}
+                    <p><b>Name: </b>{group.name}</p>
+                    <p><b>Description: </b>{group.description}</p>
                     <Cards sectionTitle={"Group Topics"}
                            content={topics}
                            cardPath={"topics"}

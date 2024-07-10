@@ -20,41 +20,21 @@ export const SidebarData = [
                 path: `${CLIPCLASS_URL}/users/${loggedUserId}/classes`
             },
             {
-                title: 'My groups',
-                path: `${CLIPCLASS_URL}/users/${loggedUserId}/groups`
-            },
-            {
-                title: 'My topics',
-                path: `${CLIPCLASS_URL}/users/${loggedUserId}/topics`
-            },
-            {
                 title: 'My votes',
                 path: `${CLIPCLASS_URL}/users/${loggedUserId}/votes`
             },
         ]
     },
     {
-        title: 'General section',
+        title: 'Groups',
         subNav: [
             {
-                title: 'Courses',
-                path: `${CLIPCLASS_URL}/courses`
+                title: 'My groups',
+                path: `${CLIPCLASS_URL}/users/${loggedUserId}/groups`
             },
             {
-                title: 'Subjects',
-                path: `${CLIPCLASS_URL}/subjects`
-            },
-            {
-                title: 'Classes',
-                path: `${CLIPCLASS_URL}/classes`
-            },
-            {
-                title: 'Groups',
+                title: 'Class Groups',
                 path: `${CLIPCLASS_URL}/groups`
-            },
-            {
-                title: 'Topics',
-                path: `${CLIPCLASS_URL}/topics`
             }
         ]
     },

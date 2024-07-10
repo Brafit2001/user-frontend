@@ -38,8 +38,8 @@ const Course = () => {
             {course &&
                 <div>
                     <h1>{getTitleFromPath(location)}</h1>
-                    <p>Course title: {course.title}</p>
-                    <p>Course year: {course.year}</p>
+                    <p><b>Title:</b> {course.title}</p>
+                    <p><b>Year:</b> {course.year}</p>
                     <Cards sectionTitle={userId ? "My course subjects" : "All course subjects"}
                            content={subjects}
                            cardPath={"subjects"}

@@ -12,7 +12,6 @@ import {groupsRoutes} from "./routes/groups-ms/GroupsRoutes";
 import {topicsRoutes} from "./routes/groups-ms/TopicsRoutes";
 import {postsRoutes} from "./routes/votes-ms/PostsRoutes";
 import {votesRoutes} from "./routes/votes-ms/VotesRoutes";
-import Class from "./pages/courses-ms/classes/Class";
 import ErrorPage from "./pages/Error";
 
 function App() {

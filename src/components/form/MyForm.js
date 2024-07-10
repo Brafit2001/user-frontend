@@ -1,4 +1,4 @@
-import {CheckElementInList} from "../../utils/AuxiliarFunctions";
+import Capitalize, {CheckElementInList} from "../../utils/AuxiliarFunctions";
 import FieldMap from "./FieldMap";
 import {CLIPCLASS_URL} from "../../Constants";
 import {ClipclassData} from "../ClipclassData";
@@ -31,13 +31,13 @@ const MyForm = ({item, actionFunction, table, mode, selectList}) => {
     }
 
     return (
-        <form className="edit-form" action="">
+        <form className="my-form" action="">
 
             {
                 ClipclassData[table][mode].map((key) => {
                     return (
-                        <div key={key}>
-                            <label htmlFor="">{key + ": "}</label>
+                        <div key={key} className={"card-input"}>
+                            <label htmlFor="">{Capitalize(key) + ": "}</label>
                             {(key !== undefined) && selectInput(item, key)}
                         </div>
                     )

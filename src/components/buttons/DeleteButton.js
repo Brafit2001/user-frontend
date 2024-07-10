@@ -14,7 +14,7 @@ const DeleteButton = ({deleteFunction, deleteProps}) => {
 
     return (
         <button className="delete" onClick={() => handleDelete()}>
-            <img className="action-icon" src={TrashIcon} alt=""/>
+            <img className="action-icon" src={TrashIcon} alt=""/>Delete
         </button>
     )
 }

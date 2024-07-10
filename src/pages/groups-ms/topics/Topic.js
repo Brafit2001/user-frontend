@@ -2,34 +2,41 @@
 import Cards from "../../../components/cards/Cards";
 import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
-import {getTitleFromPath, getIdFromPath} from "../../../utils/AuxiliarFunctions";
+import {getTitleFromPath, getIdFromPath, parseIds} from "../../../utils/AuxiliarFunctions";
 import {getAllPosts} from "../../../services/votes-ms/PostService";
 import {getTopicById} from "../../../services/groups-ms/TopicService";
+import {getGroupUsers} from "../../../services/groups-ms/GroupService";
 
 const Topic = () => {
-    const [posts, setPosts] = useState([])
-    // TOPIC ID
     const location = useLocation()
-    const [topic, setTopic] = useState(location.state)
-    const path = location.pathname.split("/")
-    const topicId = path[path.length - 1]
 
-    const userId = getIdFromPath(location)
+    const [posts, setPosts] = useState([])
+    const [topic, setTopic] = useState(location.state)
+    // IDS
+    const topicId = getIdFromPath(location, "topics")
+    const userId = getIdFromPath(location, "users")
+    const groupId = getIdFromPath(location, "groups")
 
     useEffect(() => {
 
         !topic && getTopicById(topicId).then((topic) => setTopic(topic))
-        const params = userId ? {topic: topicId} : {topic: topicId, visible: 1}
-        getAllPosts(params).then((posts) => {
-            setPosts(posts)
+        getGroupUsers(groupId).then((users) => {
+            console.log(parseIds(users))
+            const params = userId ? {topic: topicId, user: parseIds(users)} : {topic: topicId, visible: 1, user: parseIds(users)}
+            getAllPosts(params).then((posts) => {
+                setPosts(posts)
+            })
         })
-    }, [topic, topicId, userId]);
+
+
+    }, [groupId, topic, topicId, userId]);
 
     return (
         <>
             <h1>{getTitleFromPath(location)}</h1>
-            <p>Topic title: {topic.title}</p>
-            <p>Topic year: {topic.year}</p>
+            <p><b>Title:</b> {topic.title}</p>
+            <p><b>Deadline: </b> {topic.deadline}</p>
+            <p><b>Unit: </b>{topic.unit}</p>
             <Cards sectionTitle={userId ? "My group posts" : "Group posts"}
                    content={posts}
                    cardPath={"posts"}

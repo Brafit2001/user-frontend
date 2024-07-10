@@ -31,7 +31,7 @@ const NavBar = ({handleSideBarVisibility}) => {
             <div className="content">
                 <div className="logo">
                     <MenuIcon style={{ width: 30, aspectRatio: "1/1",cursor: 'pointer' }} onClick={handleSideBarVisibility}/>
-                    <Link to="/clipclass">Logo</Link>
+                    <Link to="/clipclass">ClipClass</Link>
                 </div>
                 {user &&
                     <div className="profile">

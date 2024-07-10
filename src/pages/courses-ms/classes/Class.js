@@ -6,6 +6,7 @@ import {getAllGroups} from "../../../services/groups-ms/GroupService";
 import Cards from "../../../components/cards/Cards";
 import {getClassById} from "../../../services/courses-ms/ClassService";
 import {getUserGroups} from "../../../services/users-ms/UserService";
+import {getSubjectById} from "../../../services/courses-ms/SubjectService";
 
 
 const ClassPage = () => {
@@ -16,6 +17,7 @@ const ClassPage = () => {
     const path = location.pathname.split('/')
     const classId = path[path.length - 1]
     const [classItem, setClassItem] = useState(location.state)
+    const [subject, setSubject] = useState(null)
 
     const userId = getIdFromPath(location)
 
@@ -32,20 +34,17 @@ const ClassPage = () => {
             }
             else setGroups(groups)
         })
+        getSubjectById(classItem.subject).then((subject) => setSubject(subject))
     }, [classId, classItem, userId]);
     return (
         <>
-            {classItem &&
+            {(classItem && subject) &&
                 <div>
                     <h1>{getTitleFromPath(location)}</h1>
                     <Link to={`/clipclass/subjects/${classItem.subject}`}>
-                        SUBJECT: {classItem.subject}
+                        <b>Subject: </b> {subject.title}
                     </Link>
-                    {Object.keys(classItem).map((key) => {
-                        return (
-                            <p>{key} : {classItem[key]}</p>
-                        )
-                    })}
+                    <p><b>Title: </b>{classItem.title}</p>
                     <Cards sectionTitle={userId? "My class groups" : "All class groups"}
                            content={groups}
                            cardPath={"groups"}

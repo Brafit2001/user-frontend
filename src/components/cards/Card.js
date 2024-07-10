@@ -1,7 +1,7 @@
 import {Link, useLocation} from "react-router-dom";
 import {ClipclassData} from "../ClipclassData";
 import Background from "../../resources/images/course-background.png"
-import {CheckElementInList} from "../../utils/AuxiliarFunctions";
+import Capitalize, {CheckElementInList} from "../../utils/AuxiliarFunctions";
 
 const Card = ({path, element, table}) => {
 
@@ -15,11 +15,16 @@ const Card = ({path, element, table}) => {
 
     return(
         <Link to={selectPath()} className={"card"} state={element}>
-            <img src={Background} alt=""/>
             <div className="info">
-                {ClipclassData[table]["show"].map((key) => {
+                {ClipclassData[table]["show"].map((key, index) => {
                     return(
-                        <p className={key}>{key}: {element[key]}</p>
+                        <p className={ (index === 0) ? "title" : "text" }>
+                            { (index === 0)
+                                ? (key !== "mean")
+                                    ? element[key]
+                                    : Capitalize(key) + ": " + element[key]
+                                : key + ": " + element[key]}
+                        </p>
                     )
                 })}
             </div>

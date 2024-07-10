@@ -12,7 +12,7 @@ const SubMenu = ({item}) => {
         <li className="sidebar-card">
             <div className="icon-title" style={subnav ? {color: "red"} : null} onClick={showSubnav}>
                 <p  className="text">{item.title}</p>
-                {subnav ? <ArrowUp/> : <ArrowDown/>}
+                {subnav ? <ArrowUp style={{color: "white"}}/> : <ArrowDown/>}
             </div>
             {subnav &&
                 item.subNav.map((subItem, value) => {

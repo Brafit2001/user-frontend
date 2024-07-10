@@ -26,9 +26,9 @@ export const getGroupById = (groupId) =>
 
 
 
-export const getGroupUsers = (userId) =>
+export const getGroupUsers = (groupId) =>
     axios
-        .get(`${BASE_URL}${userId}/users`,{
+        .get(`${BASE_URL}${groupId}/users`,{
             headers: {
                 "Authorization": "Bearer " + TOKEN
             }

@@ -27,4 +27,5 @@ export const votesRoutes = [
     <Route path="users/:userId/posts/:postId/votes/:voteId/edit" element={<EditVote/>} key={5}/>,
     <Route path="users/:userId/votes/:voteId/edit" element={<EditVote/>} key={6} />,
 
+
 ]

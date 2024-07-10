@@ -6,7 +6,7 @@ const EditButton = ({item}) => {
 
     return (
         <Link className="edit" state={item} to={ "edit"} id={item.id}>
-            <img className="action-icon" src={EditIcon} alt=""/>
+            <img className="action-icon" src={EditIcon} alt=""/> Modify
         </Link>
     )
 

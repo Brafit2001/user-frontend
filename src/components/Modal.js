@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 
 const modal = {
     position: "fixed",
@@ -34,10 +34,30 @@ export const Modal = ({ onOpen, children }) => {
     return <div onClick={onOpen}> {children}</div>;
 };
 
-export const ModalContent = ({ onClose, children }) => {
+export const ModalContent = ({modalRef, isVisible ,setVisible, children }) => {
+
+
+    const handleClickOutside = (event) => {
+        if (modalRef.current && !modalRef.current.contains(event.target)) {
+            setVisible(false);
+        }
+    };
+
+    useEffect(() => {
+        if (isVisible) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [handleClickOutside, isVisible]);
+
     return (
-        <div style={modal} onClick={onClose}>
-            <div style={modalContent}>{children}</div>
+        <div style={modal} >
+            <div style={modalContent}>
+                {children}
+            </div>
         </div>
     );
 };

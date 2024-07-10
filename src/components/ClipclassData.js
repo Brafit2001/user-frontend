@@ -61,7 +61,7 @@ export const ClipclassData = {
             "id","title","year"
         ],
         show: [
-            "id","title","year"
+            "title","year"
         ]
     },
     classes: {
@@ -79,7 +79,7 @@ export const ClipclassData = {
             "id","subject", "title"
         ],
         show: [
-            "id","subject", "title", "image"
+            "title"
         ]
     },
     groups: {
@@ -97,7 +97,7 @@ export const ClipclassData = {
             "id","name","description", "class"
         ],
         show: [
-            "name","description", "class"
+            "name", "description"
         ]
     },
     subjects: {
@@ -115,7 +115,7 @@ export const ClipclassData = {
             "id","code","title", "course"
         ],
         show: [
-            "id","code","title", "course"
+            "title", "code"
         ]
     },
     topics: {
@@ -133,25 +133,25 @@ export const ClipclassData = {
             "id","title","deadline", "unit"
         ],
         show: [
-            "id","title","deadline", "unit"
+            "title","deadline", "unit"
         ]
     },
     votes: {
         title: "Votes",
         headers: [
-            "id","user","post", "topic", "content", "originality", "clarity", "mean"
+            "id","user","post", "mean"
         ],
         editable: [
-            "content", "originality", "clarity"
+
         ],
         create: [
-            "content","originality", "clarity"
+            "user", "post"
         ],
         filter: [
-            "id","user","post", "topic", "content", "originality", "clarity", "mean"
+            "id","user","post", "mean"
         ],
         show: [
-            "user","post", "content", "originality", "clarity", "mean"
+            "mean"
         ]
     },
     posts: {
@@ -169,7 +169,7 @@ export const ClipclassData = {
             "id","user","topic", "title", "type", "content"
         ],
         show: [
-            "id","user","topic", "title", "type"
+            "title"
         ]
     },
 

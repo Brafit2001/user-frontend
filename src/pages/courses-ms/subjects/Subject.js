@@ -5,6 +5,7 @@ import Cards from "../../../components/cards/Cards";
 import {getSubjectById} from "../../../services/courses-ms/SubjectService";
 import {CheckElementInList, getTitleFromPath, getIdFromPath} from "../../../utils/AuxiliarFunctions";
 import {getUserClasses, getUserSubjects} from "../../../services/users-ms/UserService";
+import {getCourseBydId} from "../../../services/courses-ms/CourseService";
 
 
 const Subject = () => {
@@ -15,6 +16,7 @@ const Subject = () => {
     const path = location.pathname.split('/')
     const subjectId = path[path.length - 1]
     const [subject, setSubject] = useState(location.state)
+    const [course, setCourse] = useState(null)
 
     const userId = getIdFromPath(location)
 
@@ -31,18 +33,19 @@ const Subject = () => {
             }
             else setClasses(classes)
         })
+        getCourseBydId(subject.course).then((course) => setCourse(course))
     }, [subject, subjectId, userId]);
 
     return(
         <>
-            {subject &&
+            {(subject && course) &&
                 <div>
                     <h1>{getTitleFromPath(location)}</h1>
                     <Link to={`/clipclass/courses/${subject.course}`}>
-                        COURSE: {subject.course}
+                        <b>Course:</b> {course.title + " - " + course.year}
                     </Link>
-                    <p>Subject title: {subject.title}</p>
-                    <p>Subject code: {subject.code}</p>
+                    <p><b>Title:</b> {subject.title}</p>
+                    <p><b>Code:</b> {subject.code}</p>
                     <Cards sectionTitle={userId ? "My subject classes" : "All subject classes"}
                            content={classes}
                            cardPath={"classes"}

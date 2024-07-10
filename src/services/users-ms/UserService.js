@@ -66,6 +66,17 @@ export const getUserGroups = (userId) =>
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
+export const getUserRemainingGroups = (userId) =>
+    axios
+        .get(`${BASE_URL}${userId}/groups-remaining`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+
 
 export const getUserTopics = (userId) =>
     axios
@@ -77,6 +88,15 @@ export const getUserTopics = (userId) =>
         .then((response) => response.data.data)
         .catch((error) => console.log(error))
 
+export const getUserRemainingTopics = (userId) =>
+    axios
+        .get(`${BASE_URL}${userId}/remaining-topics`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
 
 
 export const editUser = (user) => {

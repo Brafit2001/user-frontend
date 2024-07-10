@@ -47,6 +47,17 @@ export const getTopicRemainingGroups = (topicId) =>
         .catch((error) => console.log(error))
 
 
+export const getTopicRubrics= (topicId) =>
+    axios
+        .get(`${BASE_URL}${topicId}/rubrics`,{
+            headers: {
+                "Authorization": "Bearer " + TOKEN
+            }
+        })
+        .then((response) => response.data.data)
+        .catch((error) => console.log(error))
+
+
 
 export const editTopic = (topic) =>
     axios

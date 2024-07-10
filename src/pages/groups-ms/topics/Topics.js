@@ -1,29 +1,31 @@
 import {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
-import {CheckElementInList, getIdFromPath} from "../../../utils/AuxiliarFunctions";
-import {getUserSubjects, getUserTopics} from "../../../services/users-ms/UserService";
-import {getAllSubjects} from "../../../services/courses-ms/SubjectService";
+import {getIdFromPath} from "../../../utils/AuxiliarFunctions";
+import {
+    getLoggedUserId,
+    getUserRemainingTopics,
+    getUserTopics
+} from "../../../services/users-ms/UserService";
 import Cards from "../../../components/cards/Cards";
-import {getAllTopics} from "../../../services/groups-ms/TopicService";
 
 
 const Topics = () => {
     const [topics, setTopics] = useState(null)
     // COURSE ID
     const location = useLocation()
-    const userId = getIdFromPath(location)
+    const userIdPath = getIdFromPath(location)
 
 
     useEffect(() => {
-        userId ?
-            getUserTopics(userId).then((topics) => setTopics(topics))
-            : getAllTopics({visible: 1}).then((topics) => setTopics(topics))
-    }, [topics, userId]);
+        userIdPath ?
+            getUserTopics(userIdPath).then((topics) => setTopics(topics))
+            : getUserRemainingTopics(getLoggedUserId()).then((topics) => setTopics(topics))
+    }, [userIdPath]);
 
     return (
 
         <section>
-            <Cards sectionTitle={userId ? "My topics" : "All topics"}
+            <Cards sectionTitle={userIdPath ? "My topics" : "Remaining topics"}
                    content={topics}
                    cardPath={"topics"}
                    table={"topics"}

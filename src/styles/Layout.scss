@@ -39,6 +39,11 @@
   src: url("../resources/fonts/Gilroy-Light.ttf");
 }
 
+@font-face {
+  font-family: Merriweather-Bold;
+  src: url("../resources/fonts/Merriweather-Bold.ttf");
+}
+
 
 
 a{
@@ -127,12 +132,11 @@ main{
   }
 }
 
-
 .left-sidebar{
   display: flex;
   justify-content: center;
   width: 17%;
-  background-color: #FFFFFF;
+  background-color: rgba(71, 129, 255, 0.73);
   height: 90vh;
 
   .sidebar-cards{
@@ -151,6 +155,7 @@ main{
       cursor: pointer;
 
       padding: 5px;
+      color: white;
 
       .icon{
         width: 30px;
@@ -161,6 +166,7 @@ main{
         font-weight: 500;
         line-height: 24px;
         text-align: left;
+        color: white;
 
         flex: 1 1 50%;
       }
@@ -179,6 +185,8 @@ main{
         font-weight: 400;
         line-height: 24px;
         text-align: left;
+
+        color: white;
       }
     }
 
@@ -189,7 +197,7 @@ main{
   display: flex;
   width: 100%;
   height: 90vh;
-  background-color: rgba(238, 221, 221, 0.27);
+  background-color: rgba(255, 255, 255, 0.27);
 
 
   .main-content{
@@ -211,15 +219,19 @@ header{
     display: flex;
     justify-content: space-between;
     align-content: center;
+
     height: 70%;
     width: 97%;
     .logo{
       display: flex;
       align-items: center;
-      justify-content: center;
-      width: 100px;
+      justify-content: start;
+      column-gap: 20px;
+      width: 300px;
       height: 100%;
-      background-color: #f6d6fa;
+
+      font-family: Merriweather-Bold, serif;
+      font-size: 30px;
     }
     .profile{
       display: flex;
@@ -366,32 +378,29 @@ header{
     align-items: center;
     justify-content: center;
     width: 250px;
-    height: 350px;
+    height: 140px;
     background-color: white;
     border-radius: 14px;
     cursor: pointer;
     box-shadow: 0 10px 60px 0 #262D7614;
     overflow: hidden;
 
-    img{
-      height: 350px;
-    }
-
     .info{
       display: flex;
       flex-direction: column;
+      justify-content: center;
+      align-items: center;
       width: 87%;
       height: 90%;
-      margin-top: 20px;
 
 
       .title, .name{
         font-family: Poppins-semiBold, serif;
-        font-size: 18px;
+        font-size: 21px;
         color: #0B7077;
       }
 
-      .year{
+      .text{
         font-family: Poppins-light, serif;
         font-size: 14px;
         color: grey;
@@ -401,25 +410,262 @@ header{
   }
 }
 
-// READ POST
-.post-image-info{
+
+
+.home{
+
   display: flex;
-  column-gap: 30px;
-  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h1{
+    font-size: 40px;
+  }
+
+  h1, h2{
+    width: 100%;
+  }
+}
+
+
+.vote-popUp{
+  display: flex;
+  flex-direction:   column;
+  justify-content: center;
+  align-items: center;
+  overflow-y: scroll;
+
   height: 300px;
+  width: 300px;
 
-  .image{
-    width: 40%;
-    height: 100%;
-    overflow: hidden;
+  background-color: white;
+  border-radius: 10px;
 
-    .modal-image{
-      max-width: 50%;
-      max-height: 50%;
-    }
-    .post-image{
+  .submit-button{
+    border: none;
+    color: white;
+    background-color: #4781FF;
+    margin-top: 30px;
+  }
+}
+
+// READ USER
+
+.read-user{
+  .user-image-info{
+    display: flex;
+    width: 100%;
+    column-gap: 50px;
+  }
+
+  .buttons{
+    margin-top: 40px;
+    display: flex;
+    column-gap: 30px;
+    .edit-user, .change-password {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      column-gap: 10px;
+      width: 150px;
+      height: 60px;
+
+      border-radius: 10px;
+      font-family: Poppins-bold, serif;
       cursor: pointer;
-      width: 100%;
+      border: none;
+    }
+    .change-password{
+      background-color: rgba(0, 71, 255, 0.47);
+    }
+    .edit-user{
+      background-color: rgba(0, 255, 240, 0.44);
+    }
+
+    input{
+      width: 200px;
+      height: 30px;
+      border: 1px solid #b7b7b7;
+      border-radius: 5px;
     }
   }
+
+
+}
+
+// READ POST
+.read-post{
+  .post-image-info{
+    display: flex;
+    column-gap: 30px;
+    width: 100%;
+    height: 300px;
+
+    .image{
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+
+      .modal-image{
+        max-width: 50%;
+        max-height: 50%;
+      }
+      .post-image{
+        cursor: pointer;
+        width: 100%;
+      }
+    }
+
+    .right{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 50%;
+
+      .buttons{
+        display: flex;
+        column-gap: 30px;
+
+        .edit, .delete, .visibility, .vote{
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          column-gap: 10px;
+          width: 150px;
+          height: 60px;
+
+          border-radius: 10px;
+          font-family: Poppins-bold, serif;
+          cursor: pointer;
+          border: none;
+
+
+          img{
+            height: 50%;
+          }
+        }
+
+        .edit{
+          background-color: rgba(0, 255, 240, 0.51);
+          font-size: 14px;
+        }
+        .delete{
+          background-color: rgba(255, 0, 0, 0.44);
+        }
+        .visibility{
+          background-color: rgba(82, 255, 0, 0.56);
+        }
+        .vote{
+          background-color: rgba(250, 255, 0, 0.64);
+        }
+      }
+    }
+  }
+}
+
+// READ VOTE
+.read-vote{
+  .buttons{
+    display: flex;
+    column-gap: 30px;
+    margin-top: 40px;
+
+    .edit, .delete{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      column-gap: 10px;
+      width: 150px;
+      height: 60px;
+
+      border-radius: 10px;
+      font-family: Poppins-bold, serif;
+      cursor: pointer;
+      border: none;
+
+
+      img{
+        height: 50%;
+      }
+    }
+    .edit{
+      background-color: rgba(0, 255, 240, 0.51);
+      font-size: 14px;
+    }
+    .delete{
+      background-color: rgba(255, 0, 0, 0.44);
+    }
+  }
+}
+
+
+.my-form{
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  width: 100%;
+
+  .card-input{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    label{
+      font-family: Poppins SemiBold, serif;
+      color: grey;
+    }
+
+
+    input[type="text"], select{
+      width: 500px;
+      height: 35px;
+      border: 1px solid #b7b7b7;
+      border-radius: 5px;
+      padding: 0;
+
+    }
+
+    input[type="file"]{
+      margin: 0 0 30px;
+    }
+
+    /* file upload button */
+    input[type="file"]::file-selector-button {
+      border-radius: 4px;
+      padding: 0 16px;
+      height: 40px;
+      cursor: pointer;
+      background-color: white;
+      border: 1px solid rgba(0, 0, 0, 0.16);
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+      margin-right: 16px;
+      transition: background-color 200ms;
+    }
+
+    /* file upload button hover state */
+    input[type="file"]::file-selector-button:hover {
+      background-color: #f3f4f6;
+    }
+
+    /* file upload button active state */
+    input[type="file"]::file-selector-button:active {
+      background-color: #e5e7eb;
+    }
+
+
+  }
+}
+
+.submit-button{
+  width: 200px;
+  height: 40px;
+  border: solid grey 1px;
+  border-radius: 10px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.submit-button:hover{
+  background-color: #62c1e5;
+  color: white;
 }

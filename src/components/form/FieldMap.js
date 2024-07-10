@@ -5,6 +5,7 @@ import {ClipclassData} from "../ClipclassData";
 
 const FieldMap = ({ fieldType, fieldKey, item, selectList, table}) => {
 
+    const postsTypes =  {0: "Image", 1: "Video", 2: "Reel"}
     const defaultImages = ClipclassData["users"]["defaultImages"]
     const baseImageState = new Array(defaultImages.length).fill(false)
     const [imageState, setImageState] = useState(baseImageState);
@@ -20,9 +21,15 @@ const FieldMap = ({ fieldType, fieldKey, item, selectList, table}) => {
         case 'select':
             return (
                 <select name={fieldKey} id={fieldKey} onChange={(e) => handleOnchange(fieldKey, e)}>
-                    <option value={item[fieldKey]} key={item[fieldKey]}>{item[fieldKey]}</option>
+                    {(table === "posts")
+                        ? <option value={item[fieldKey]} key={item[fieldKey]}>{postsTypes[item[fieldKey]]}</option>
+                        : <option value={item[fieldKey]} key={item[fieldKey]}>{item[fieldKey]}</option>
+                    }
                     {selectList[fieldKey].sort().map((id) => (
-                        (item[fieldKey] !== id) && <option value={id} key={id}>{id}</option>
+                        (item[fieldKey] !== id) &&
+                        ((table === "posts")
+                            ? <option value={id} key={id}>{postsTypes[id]}</option>
+                            : <option value={id} key={id}>{id}</option>)
                     ))}
                 </select>
             );
